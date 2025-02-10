@@ -1,0 +1,115 @@
+/* Menghilangkan margin dan padding default */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Pastikan gambar dimulai dari atas */
+    background-color: rgba(0, 0, 0, 1); /* Latar belakang hitam */
+    background-image: url('bg.jpg'); /* Gambar latar belakang */
+    background-size: cover; /* Membuat gambar latar belakang memenuhi layar */
+    background-position: center center; /* Memastikan gambar terpusat */
+    background-repeat: no-repeat;
+    position: relative; /* Agar overlay tetap di atas latar belakang */
+    overflow: hidden; /* Menghindari overflow di luar layar */
+  }
+  
+  /* Overlay gelap di atas background */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Warna hitam dengan transparansi 80% */
+    z-index: 1; /* Agar overlay berada di atas background tapi di bawah konten lainnya */
+  }
+  
+  /* Gambar Portofolio - Agar bisa diskrol jika lebih tinggi dari layar */
+  .container {
+    max-width: 100%;
+    max-height: 100vh;
+    overflow-y: auto; /* Membolehkan scroll vertikal */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Memastikan gambar dimulai dari atas */
+    position: relative;
+    z-index: 2; /* Agar gambar portofolio tetap di atas overlay */
+  }
+  
+  /* Gambar Portofolio */
+  #portfolio-image {
+    width: 100%;
+    height: auto; /* Menjaga rasio gambar */
+    display: block;
+    object-fit: contain; /* Menyesuaikan gambar dengan wadah tanpa memotong gambar */
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 1s ease, transform 1s ease; /* Efek transisi untuk perubahan opacity dan zoom */
+    z-index: 2;
+  }
+  
+  /* Efek saat gambar terlihat */
+  #portfolio-image.show {
+    opacity: 1;
+    transform: scale(1); /* Zoom out agar gambar kembali ke ukuran normal */
+  }
+  
+  /* Kontrol tombol Next dan Previous di bawah gambar */
+  .controls {
+    position: absolute;
+    bottom: 30px; /* Menempatkan tombol di bawah gambar */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+  }
+  
+  /* Tombol Next dan Previous */
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  /* Tombol Next di kanan bawah */
+  #next {
+    margin-right: 30px;
+  }
+  
+  /* Tombol Previous di kiri bawah */
+  #prev {
+    margin-left: 30px;
+  }
+  
+  /* Efek hover untuk menampilkan tombol saat kursor mengarah ke tombol */
+  .controls:hover button {
+    opacity: 1;
+  }
+  
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Mengatasi masalah zoom dan membuat tampilan responsive */
+  @media screen and (max-width: 768px) {
+    #portfolio-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    button {
+      padding: 8px 16px;
+    }
+  }
+  
