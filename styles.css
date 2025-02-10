@@ -112,4 +112,26 @@ body, html {
       padding: 8px 16px;
     }
   }
+
+/* Menyesuaikan ukuran gambar agar tidak terlalu besar di HP */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    #portfolio-image {
+        max-width: 90%; /* Agar tidak terlalu besar */
+        height: auto;
+    }
+}
+
+/* Untuk layar sangat kecil */
+@media screen and (max-width: 480px) {
+    .controls {
+        bottom: 10px; /* Memastikan tombol tidak tertutup */
+    }
+    button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
   
