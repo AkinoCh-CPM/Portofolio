@@ -15,24 +15,14 @@ function prevImage() {
 
 // Fungsi untuk memperbarui gambar yang ditampilkan dengan efek transisi
 function updateImage() {
-  const portfolioImage = document.getElementById('portfolio-image');
+    const portfolioImage = document.getElementById('portfolio-image');
 
-  // Efek transisi untuk memudar keluar gambar lama
-  portfolioImage.classList.remove('show');
-  portfolioImage.style.opacity = 0;
-
-  // Menunggu sedikit untuk efek transisi selesai, lalu mengganti gambar
-  setTimeout(() => {
-    portfolioImage.src = `Portofolio Saya ${currentImage}.jpg`; // Mengubah gambar
-    portfolioImage.style.opacity = 1; // Menampilkan gambar baru
-    portfolioImage.classList.add('show'); // Menambahkan kelas 'show' untuk efek fade in
-  }, 1000); // Delay selama 1 detik untuk memberikan efek transisi mulus
-
-  // Efek zoom untuk transisi yang lebih menarik
-  portfolioImage.style.transform = 'scale(1.1)'; // Zoom in saat gambar muncul
-  setTimeout(() => {
-    portfolioImage.style.transform = 'scale(1)'; // Kembali ke ukuran normal setelah efek zoom
-  }, 1500); // Waktu delay untuk zoom out
+    // Menyembunyikan gambar lama dengan efek transisi
+    portfolioImage.classList.remove('show');
+    setTimeout(() => {
+        portfolioImage.src = `Portofolio Saya ${currentImage}.jpg`;
+        portfolioImage.classList.add('show');
+    }, 500); // Mempercepat transisi dari 1000ms ke 500ms
 }
 
 // Inisialisasi gambar pertama saat halaman pertama kali dimuat
