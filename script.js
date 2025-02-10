@@ -17,12 +17,22 @@ function prevImage() {
 function updateImage() {
     const portfolioImage = document.getElementById('portfolio-image');
 
+    // Cek apakah elemen ditemukan
+    if (!portfolioImage) return;
+
     // Efek transisi keluar
     portfolioImage.classList.remove('show');
+
+    // Tunggu sebentar sebelum mengganti gambar
     setTimeout(() => {
-        portfolioImage.src = `Portofolio Saya ${currentImage}.jpg`;
-        portfolioImage.classList.add('show');
-    }, 500); // Lebih cepat dari sebelumnya
+        let newImageSrc = `Portofolio Saya ${currentImage}.jpg`;
+        portfolioImage.src = newImageSrc;
+
+        // Pastikan gambar dimuat sebelum menampilkan efek transisi
+        portfolioImage.onload = () => {
+            portfolioImage.classList.add('show');
+        };
+    }, 500);
 }
 
 // Jalankan gambar pertama saat halaman dimuat
